@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-rose: #C8825B;
+  --color-terracotta: #B56A45;
+  --color-rose-light: #E9A87C;
+  --color-dark: #2E2A27;
+  --color-ivory: #FBF7F4;
+  --color-nude: #F9E7E1;
+  --color-taupe: #7A6B63;
+  --color-sage: #A8B5A0;
+  --color-beige: #D4B896;
+  --color-divider: #E5DDD7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-dark);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- boutons --- */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold tracking-wider uppercase rounded-md transition-all duration-200 border;
+}
+.btn-primary {
+  @apply bg-brand-rose border-brand-rose text-white hover:bg-brand-terracotta hover:border-brand-terracotta;
+}
+.btn-dark {
+  @apply bg-brand-dark border-brand-dark text-brand-ivory hover:bg-black/90;
+}
+.btn-outline {
+  @apply bg-transparent border-brand-rose text-brand-rose hover:bg-brand-rose hover:text-white;
+}
+.btn-ghost-light {
+  @apply bg-transparent border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-dark;
+}
+
+/* --- Composition layout --- */
+.container-editorial {
+  @apply mx-auto max-w-7xl px-6 lg:px-10;
+}
+.eyebrow {
+  @apply text-xs font-medium uppercase tracking-[0.18em] text-brand-rose;
+}
+.section-title {
+  @apply font-serif text-4xl md:text-5xl font-bold text-brand-dark;
+}
+
+/* --- Focus accessible --- */
+*:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Prose (blog) --- */
+.prose-editorial {
+  @apply max-w-3xl mx-auto;
+}
+.prose-editorial h2 {
+  @apply font-serif text-3xl font-bold text-brand-dark mt-10 mb-4;
+}
+.prose-editorial h3 {
+  @apply font-serif text-2xl font-semibold text-brand-terracotta mt-8 mb-3;
+}
+.prose-editorial p {
+  @apply my-4 leading-relaxed text-brand-dark/90;
+}
+.prose-editorial a {
+  @apply text-brand-terracotta underline-offset-2 hover:underline;
+}
+.prose-editorial ul {
+  @apply my-4 pl-6 list-disc space-y-2;
+}
+.prose-editorial img {
+  @apply my-6 rounded-xl2;
+}
+.prose-editorial blockquote {
+  @apply my-6 pl-4 border-l-2 border-brand-rose italic text-brand-taupe;
+}
+
+/* --- TipTap --- */
+.ProseMirror {
+  @apply min-h-[300px] outline-none;
+}
+.ProseMirror:focus {
+  outline: none;
+}

@@ -1,0 +1,155 @@
+// Prisma schema — Site Élodie Duhayon
+// Docs : https://pris.ly/d/prisma-schema
+//
+// >> Ce fichier est la version PROD (MySQL Infomaniak).
+// >> Pour le dev local, on utilise prisma/schema.dev.prisma (SQLite).
+//
+// Les "enums" sont des String pour rester compatibles avec SQLite en dev.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// Authentification admin
+// ============================================================
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String
+  role          String    @default("ADMIN")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// ============================================================
+// Réservations et disponibilités
+// ============================================================
+model Service {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String
+  priceLabel  String
+  durationMin Int       @default(60)
+  location    String
+  featured    Boolean   @default(false)
+  sortOrder   Int       @default(0)
+  active      Boolean   @default(true)
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Booking {
+  id            String    @id @default(cuid())
+  serviceId     String
+  service       Service   @relation(fields: [serviceId], references: [id])
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  goal          String?
+  message       String?
+  startsAt      DateTime
+  endsAt        DateTime
+  status        String    @default("PENDING")
+  notes         String?
+  remindedAt    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([startsAt])
+  @@index([status])
+}
+
+// Plages de disponibilité (par jour de la semaine ou ponctuelles)
+model AvailabilityRule {
+  id          String    @id @default(cuid())
+  weekday     Int
+  startMin    Int
+  endMin      Int
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+}
+
+// Exceptions (vacances, jours off, créneaux spéciaux)
+model AvailabilityException {
+  id          String    @id @default(cuid())
+  date        DateTime
+  allDayOff   Boolean   @default(false)
+  startMin    Int?
+  endMin      Int?
+  note        String?
+  createdAt   DateTime  @default(now())
+
+  @@index([date])
+}
+
+// ============================================================
+// Contenu du site (éditable en admin)
+// ============================================================
+model PageContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  name       String
+  program    String?
+  quote      String
+  rating     Int      @default(5)
+  photoUrl   String?
+  published  Boolean  @default(true)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  content     String
+  coverUrl    String?
+  category    String?
+  readingMin  Int      @default(4)
+  published   Boolean  @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, publishedAt])
+}
+
+// ============================================================
+// Messages de contact et newsletter
+// ============================================================
+model ContactMessage {
+  id         String   @id @default(cuid())
+  firstName  String
+  lastName   String?
+  email      String
+  phone      String?
+  message    String
+  handled    Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  consent     Boolean  @default(true)
+  subscribedAt DateTime @default(now())
+  unsubscribed Boolean @default(false)
+}
