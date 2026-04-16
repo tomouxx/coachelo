@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import { Calendar, Users, MessageSquare, FileText } from "lucide-react";
+import { Calendar, Users, MessageSquare, FileText, Image, Edit3, ExternalLink } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +44,27 @@ export default async function AdminDashboard() {
             <div className="text-3xl font-serif text-brand-dark">{s.value}</div>
             <div className="text-sm text-brand-taupe">{s.label}</div>
           </Link>
+        ))}
+      </div>
+
+      {/* Raccourcis rapides */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+        {[
+          { href: "/admin/contenu", label: "Modifier le contenu", icon: Edit3 },
+          { href: "/admin/contenu", label: "Changer les photos", icon: Image, hash: "images" },
+          { href: "/admin/blog/new", label: "Nouvel article", icon: FileText },
+          { href: "/", label: "Voir le site", icon: ExternalLink, external: true }
+        ].map((shortcut) => (
+          <a
+            key={shortcut.label}
+            href={shortcut.external ? shortcut.href : shortcut.href}
+            target={shortcut.external ? "_blank" : undefined}
+            rel={shortcut.external ? "noopener" : undefined}
+            className="flex items-center gap-3 bg-brand-nude border border-brand-divider rounded-xl px-4 py-3 text-sm font-medium text-brand-dark hover:border-brand-rose transition"
+          >
+            <shortcut.icon className="w-4 h-4 text-brand-rose" />
+            {shortcut.label}
+          </a>
         ))}
       </div>
 

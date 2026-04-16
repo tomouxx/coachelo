@@ -11,7 +11,8 @@ import {
   Package,
   Settings,
   Edit3,
-  LogOut
+  LogOut,
+  ExternalLink
 } from "lucide-react";
 
 const nav = [
@@ -21,7 +22,7 @@ const nav = [
   { href: "/admin/services", label: "Prestations", icon: Package },
   { href: "/admin/temoignages", label: "Témoignages", icon: MessageSquareQuote },
   { href: "/admin/blog", label: "Blog", icon: FileText },
-  { href: "/admin/contenu", label: "Contenu", icon: Edit3 },
+  { href: "/admin/contenu", label: "Contenu du site", icon: Edit3 },
   { href: "/admin/parametres", label: "Paramètres", icon: Settings }
 ];
 
@@ -55,8 +56,16 @@ export default function Sidebar({ userName }: { userName: string }) {
         })}
       </nav>
 
-      <div className="border-t border-white/10 pt-4 mt-6">
-        <div className="text-xs text-brand-beige mb-2">Connectée</div>
+      <div className="border-t border-white/10 pt-4 mt-6 space-y-3">
+        <a
+          href="/"
+          target="_blank"
+          rel="noopener"
+          className="flex items-center gap-2 text-sm text-brand-roseLight hover:text-white transition"
+        >
+          <ExternalLink className="w-4 h-4" /> Voir le site
+        </a>
+        <div className="text-xs text-brand-beige mb-1">Connectée</div>
         <div className="text-sm mb-3">{userName}</div>
         <button
           onClick={() => signOut({ callbackUrl: "/admin/login" })}

@@ -17,23 +17,23 @@ interface SettingsByCategory {
 }
 
 const categoryLabels: Record<string, string> = {
-  hero: "Hero",
-  home_sections: "Accueil",
-  about: "À propos (intro)",
-  about_extra: "À propos (bio)",
-  nutrition: "Nutrition",
-  nutrition_extra: "Nutrition (extra)",
-  tarifs: "Tarifs (page)",
-  tarifs_plans: "Tarifs (offres)",
-  services_page: "Services (perks)",
-  services_faq: "FAQ",
-  contact_info: "Contact (infos)",
-  contact_page: "Contact (page)",
-  footer: "Pied de page",
-  temoignages_page: "Témoignages",
-  blog_page: "Blog",
-  images: "Photos & Images",
-  seo: "SEO"
+  hero: "🏠 Hero",
+  home_sections: "🏠 Accueil (sections)",
+  about: "👩 À propos (intro)",
+  about_extra: "👩 À propos (bio & diplômes)",
+  services_page: "💪 Services (avantages)",
+  nutrition: "🥗 Nutrition",
+  nutrition_extra: "🥗 Nutrition (extra)",
+  tarifs: "💶 Tarifs (page)",
+  tarifs_plans: "💶 Tarifs (offres)",
+  services_faq: "❓ FAQ",
+  temoignages_page: "⭐ Témoignages",
+  images: "📷 Photos & Images",
+  contact_info: "📞 Contact (infos)",
+  contact_page: "📞 Contact (page)",
+  footer: "🔻 Pied de page",
+  blog_page: "📝 Blog",
+  seo: "🔍 SEO"
 };
 
 export default function ContentPage() {
