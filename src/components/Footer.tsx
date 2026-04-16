@@ -22,8 +22,7 @@ export default async function Footer() {
       <div className="container-editorial py-16 grid gap-10 md:grid-cols-4">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/monogramme.png" alt="Élodie Duhayon" width={50} height={50} className="mb-3 opacity-90" />
-          <h3 className="font-serif text-2xl font-bold text-brand-roseLight">Élodie Duhayon</h3>
+          <img src="/logo-transparent.png" alt="Élodie Duhayon — Personal Trainer" width={160} height={146} className="mb-3" />
           <p className="mt-3 text-sm text-brand-ivory/70 leading-relaxed">{tagline}</p>
         </div>
 

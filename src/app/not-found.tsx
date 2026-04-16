@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-rose-50 to-white px-4">
       <div className="text-center max-w-md">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/monogramme.png" alt="Logo" width={64} height={64} className="mx-auto mb-4 opacity-60" />
+        <img src="/monogramme-transparent.png" alt="Logo" width={64} height={64} className="mx-auto mb-4 opacity-60" />
         <p className="text-8xl font-bold text-rose-300 font-heading">404</p>
         <h1 className="mt-4 text-2xl font-bold text-gray-900">
           Page introuvable

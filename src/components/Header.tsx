@@ -23,7 +23,7 @@ export default function Header() {
       <div className="container-editorial flex items-center justify-between h-20">
         <Link href="/" className="flex items-center gap-3" aria-label="Accueil">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/monogramme.png" alt="Logo Élodie Duhayon" width={40} height={40} className="rounded-full" />
+          <img src="/monogramme-transparent.png" alt="Logo Élodie Duhayon" width={40} height={40} className="rounded-full" />
           <span className="font-serif text-xl font-bold text-brand-terracotta">
             Élodie Duhayon
           </span>
