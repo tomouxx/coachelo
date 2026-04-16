@@ -429,7 +429,7 @@ async function main() {
       category: "contact_info",
       label: "Email",
       type: "text",
-      value: "contact@elodieduhayon.ch",
+      value: "contact@coachelo.ch",
       sortOrder: 3
     },
     {

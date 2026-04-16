@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    const adminEmails = (process.env.ADMIN_EMAILS || "contact@elodieduhayon.ch")
+    const adminEmails = (process.env.ADMIN_EMAILS || "contact@coachelo.ch")
       .split(",")
       .map((s) => s.trim());
 

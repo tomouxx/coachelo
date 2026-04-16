@@ -9,7 +9,7 @@ export default function MentionsLegales() {
       <p>
         Le présent site est édité par <strong>Élodie Duhayon</strong>, coach sportive et nutrition, indépendante.
         <br />Adresse : Poliez-Pittet, Suisse.
-        <br />Email : contact@elodieduhayon.ch
+        <br />Email : contact@coachelo.ch
         <br />Téléphone : +41 00 000 00 00
       </p>
 

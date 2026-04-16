@@ -12,7 +12,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.elodieduhayon.ch"),
+  metadataBase: new URL("https://www.coachelo.ch"),
   title: {
     default: "Élodie Duhayon · Coach sportive & nutrition en Suisse",
     template: "%s · Élodie Duhayon"

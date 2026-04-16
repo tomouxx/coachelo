@@ -51,7 +51,7 @@ export default async function ContactPage({ searchParams }: { searchParams: { se
           <div className="bg-brand-nude rounded-xl2 p-8 space-y-3 text-sm">
             <h3 className="font-serif text-xl font-semibold">Mes coordonnées</h3>
             <p className="flex items-center gap-2"><MapPin size={16} className="text-brand-rose" /> {c("contact_address", "Poliez-Pittet, Suisse")}</p>
-            <p className="flex items-center gap-2"><Mail size={16} className="text-brand-rose" /> {c("contact_email", "contact@elodieduhayon.ch")}</p>
+            <p className="flex items-center gap-2"><Mail size={16} className="text-brand-rose" /> {c("contact_email", "contact@coachelo.ch")}</p>
             <p className="flex items-center gap-2"><Phone size={16} className="text-brand-rose" /> {c("contact_phone", "+41 00 000 00 00")}</p>
             <p className="flex items-center gap-2"><Clock size={16} className="text-brand-rose" /> {pg("contact_hours", "Lun-Ven 8h-19h · Sam 9h-13h")}</p>
           </div>

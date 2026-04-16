@@ -42,7 +42,7 @@ const shell = (title: string, body: string) => `
     <hr style="border:none;border-top:1px solid #E5DDD7;margin:32px 0" />
     <div style="text-align:center;color:#7A6B63;font-size:12px">
       Élodie Duhayon · Poliez-Pittet, Suisse<br/>
-      <a href="https://www.elodieduhayon.ch" style="color:#C8825B;text-decoration:none">www.elodieduhayon.ch</a>
+      <a href="https://www.coachelo.ch" style="color:#C8825B;text-decoration:none">www.coachelo.ch</a>
     </div>
   </div>
 </body></html>`;
@@ -100,7 +100,7 @@ export function bookingNotifyAdmin(booking: {
       ${booking.goal ? `<tr><td style="padding:6px 0;color:#7A6B63">Objectif</td><td>${booking.goal}</td></tr>` : ""}
       ${booking.message ? `<tr><td style="padding:6px 0;color:#7A6B63">Message</td><td>${booking.message}</td></tr>` : ""}
     </table>
-    <a href="https://www.elodieduhayon.ch/admin/reservations" style="display:inline-block;padding:12px 24px;background:#C8825B;color:#ffffff;text-decoration:none;border-radius:6px">Voir dans l'admin</a>`
+    <a href="https://www.coachelo.ch/admin/reservations" style="display:inline-block;padding:12px 24px;background:#C8825B;color:#ffffff;text-decoration:none;border-radius:6px">Voir dans l'admin</a>`
   );
 }
 

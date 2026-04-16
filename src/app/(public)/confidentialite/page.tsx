@@ -8,7 +8,7 @@ export default function Confidentialite() {
 
       <h2>1. Responsable du traitement</h2>
       <p>
-        <strong>Élodie Duhayon</strong>, Poliez-Pittet, Suisse — contact@elodieduhayon.ch
+        <strong>Élodie Duhayon</strong>, Poliez-Pittet, Suisse — contact@coachelo.ch
       </p>
 
       <h2>2. Données collectées</h2>
@@ -56,7 +56,7 @@ export default function Confidentialite() {
       <p>
         Conformément à la LPD et au RGPD, tu disposes d'un droit d'accès, de rectification,
         d'effacement, de limitation et de portabilité. Tu peux exercer ces droits par email à
-        contact@elodieduhayon.ch.
+        contact@coachelo.ch.
       </p>
 
       <h2>9. Sécurité</h2>
@@ -67,7 +67,7 @@ export default function Confidentialite() {
 
       <h2>10. Contact</h2>
       <p>
-        Pour toute question relative à cette politique, écris-moi à contact@elodieduhayon.ch.
+        Pour toute question relative à cette politique, écris-moi à contact@coachelo.ch.
       </p>
     </article>
   );

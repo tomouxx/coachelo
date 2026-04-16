@@ -9,7 +9,7 @@ export default async function Footer() {
   ]);
 
   const address = contactS["contact_address"] || "Poliez-Pittet, Suisse";
-  const email = contactS["contact_email"] || "contact@elodieduhayon.ch";
+  const email = contactS["contact_email"] || "contact@coachelo.ch";
   const phone = contactS["contact_phone"] || "+41 00 000 00 00";
   const instagram = contactS["contact_instagram"] || "https://instagram.com";
   const igHandle = instagram.includes("instagram.com/") ? "@" + instagram.split("instagram.com/")[1].replace(/\/$/, "") : "@elodieduhayon";
