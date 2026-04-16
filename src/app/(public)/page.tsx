@@ -18,7 +18,7 @@ export default async function HomePage() {
     prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
     prisma.testimonial.findMany({ where: { published: true }, orderBy: { sortOrder: "asc" }, take: 3 }).catch(() => []),
     prisma.blogPost.findMany({ where: { published: true }, orderBy: { publishedAt: "desc" }, take: 3 }).catch(() => []),
-    getSettings("hero").catch(() => ({}))
+    getSettings("hero").catch((): Record<string, string> => ({}))
   ]);
 
   // Get hero content with fallbacks

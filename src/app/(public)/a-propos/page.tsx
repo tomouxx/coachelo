@@ -6,7 +6,7 @@ import { Heart, ShieldCheck, Sparkles } from "lucide-react";
 export const metadata = { title: "À propos" };
 
 export default async function AboutPage() {
-  const settings = await getSettings("about").catch(() => ({}));
+  const settings = await getSettings("about").catch((): Record<string, string> => ({}));
 
   const introText = settings["about_page_intro_text"] || "Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à observer, écouter, respecter un corps.";
   const listening = settings["about_values_listening"] || "Ton corps, ton histoire, ton rythme.";

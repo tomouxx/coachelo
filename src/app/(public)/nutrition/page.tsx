@@ -6,7 +6,7 @@ import { ClipboardList, Salad, LineChart } from "lucide-react";
 export const metadata = { title: "Nutrition" };
 
 export default async function NutritionPage() {
-  const settings = await getSettings("nutrition").catch(() => ({}));
+  const settings = await getSettings("nutrition").catch((): Record<string, string> => ({}));
 
   const heroTitle = settings["nutrition_hero_title"] || "La nutrition, moitié du chemin";
   const heroSubtitle = settings["nutrition_hero_subtitle"] || "Une approche durable, concrète, sans régime ni culpabilité.";

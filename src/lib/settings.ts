@@ -1,8 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
-export interface SettingsCache {
-  [key: string]: string;
-}
+export type SettingsCache = Record<string, string>;
 
 let settingsCache: SettingsCache | null = null;
 let cacheTime = 0;

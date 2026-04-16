@@ -16,7 +16,7 @@ const perks: Record<string, string[]> = {
 export default async function ServicesPage() {
   const [services, faqSettings] = await Promise.all([
     prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
-    getSettings("services_faq").catch(() => ({}))
+    getSettings("services_faq").catch((): Record<string, string> => ({}))
   ]);
 
   // Build FAQ items from settings
