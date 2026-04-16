@@ -6,11 +6,8 @@ import { Menu, X } from "lucide-react";
 
 const nav = [
   { href: "/", label: "Accueil" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/services", label: "Services" },
-  { href: "/nutrition", label: "Nutrition" },
-  { href: "/tarifs", label: "Tarifs" },
-  { href: "/temoignages", label: "Témoignages" },
+  { href: "/#services", label: "Services" },
+  { href: "/#tarifs", label: "Tarifs" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" }
 ];
@@ -41,7 +38,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <Link href="/contact" className="btn btn-primary text-xs">
+          <Link href="/reservation" className="btn btn-primary text-xs">
             Réserver
           </Link>
         </div>
@@ -68,7 +65,7 @@ export default function Header() {
                 {n.label}
               </Link>
             ))}
-            <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-primary mt-2">
+            <Link href="/reservation" onClick={() => setOpen(false)} className="btn btn-primary mt-2">
               Réserver une séance
             </Link>
           </nav>

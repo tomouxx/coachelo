@@ -29,12 +29,11 @@ export default async function Footer() {
         <div>
           <h4 className="text-sm uppercase tracking-wider text-brand-roseLight mb-4">Navigation</h4>
           <ul className="space-y-2 text-sm text-brand-ivory/80">
-            <li><Link href="/a-propos">À propos</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/nutrition">Nutrition</Link></li>
-            <li><Link href="/tarifs">Tarifs</Link></li>
+            <li><Link href="/#services">Services</Link></li>
+            <li><Link href="/#tarifs">Tarifs</Link></li>
             <li><Link href="/blog">Blog</Link></li>
             <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/reservation">Réservation</Link></li>
           </ul>
         </div>
 
