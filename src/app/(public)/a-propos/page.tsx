@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getSettings } from "@/lib/settings";
 import { Heart, ShieldCheck, Sparkles } from "lucide-react";
 
 export const metadata = { title: "À propos" };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const settings = await getSettings("about").catch(() => ({}));
+
+  const introText = settings["about_page_intro_text"] || "Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à observer, écouter, respecter un corps.";
+  const listening = settings["about_values_listening"] || "Ton corps, ton histoire, ton rythme.";
+  const rigor = settings["about_values_rigor"] || "Protocoles clairs, suivi précis, sécurité.";
+  const kindness = settings["about_values_kindness"] || "Zéro jugement, zéro culpabilité.";
+
   return (
     <>
       <section className="container-editorial pt-20 pb-12">
@@ -13,9 +21,7 @@ export default function AboutPage() {
           De soignante à coach, au service de ton bien-être
         </h1>
         <p className="mt-6 max-w-3xl text-lg text-brand-dark/85 leading-relaxed">
-          Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès
-          de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à
-          observer, écouter, respecter un corps.
+          {introText}
         </p>
       </section>
 
@@ -57,9 +63,9 @@ export default function AboutPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { icon: Heart, title: "Écoute", body: "Ton corps, ton histoire, ton rythme." },
-              { icon: ShieldCheck, title: "Rigueur", body: "Protocoles clairs, suivi précis, sécurité." },
-              { icon: Sparkles, title: "Bienveillance", body: "Zéro jugement, zéro culpabilité." }
+              { icon: Heart, title: "Écoute", body: listening },
+              { icon: ShieldCheck, title: "Rigueur", body: rigor },
+              { icon: Sparkles, title: "Bienveillance", body: kindness }
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="bg-white rounded-xl2 p-8 text-center shadow-card">
                 <Icon className="mx-auto text-brand-rose" size={28} />

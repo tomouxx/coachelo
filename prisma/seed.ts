@@ -174,6 +174,345 @@ async function main() {
     });
   }
 
+  // --- Site Settings (editable from admin panel) ---
+  const siteSettings = [
+    // HERO / Homepage
+    {
+      key: "home_hero_eyebrow",
+      category: "hero",
+      label: "Eyebrow (Sous-titre en petit)",
+      type: "text",
+      value: "Coach sportive & nutrition · Suisse",
+      sortOrder: 1
+    },
+    {
+      key: "home_hero_title",
+      category: "hero",
+      label: "Titre principal",
+      type: "text",
+      value: "Coach sportive & nutrition à ton rythme",
+      sortOrder: 2
+    },
+    {
+      key: "home_hero_subtitle",
+      category: "hero",
+      label: "Sous-titre",
+      type: "textarea",
+      value: "Coaching personnalisé à domicile, en extérieur, en salle et en ligne — depuis Poliez-Pittet.",
+      sortOrder: 3
+    },
+    // ABOUT PAGE
+    {
+      key: "about_page_intro_text",
+      category: "about",
+      label: "Texte introduction page À propos",
+      type: "textarea",
+      value: "Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à observer, écouter, respecter un corps.",
+      sortOrder: 1
+    },
+    {
+      key: "about_page_body",
+      category: "about",
+      label: "Corps de la page À propos",
+      type: "richtext",
+      value: "<p>Infirmière diplômée d'État, j'ai passé huit années en milieu hospitalier et en EHPAD, notamment à l'Hôpital Privé La Porte Verte (Versailles), au Centre Hospitalier Ambroise Paré (Mons, Belgique) et aux Logis Douaisiens. La gériatrie et les soins palliatifs m'ont enseigné la rigueur, la patience et la lecture fine du corps humain.</p><p>J'ai choisi de déplacer mon action : plutôt que de réparer, accompagner en amont. Le sport et la nutrition sont devenus mon nouveau champ d'intervention pour aider chacun à vivre mieux, plus longtemps, et en confiance avec son corps.</p><p>Aujourd'hui, je coache à domicile, en extérieur, en salle et en ligne depuis Poliez-Pittet. J'accompagne femmes et hommes de tous âges, tous niveaux, avec une seule promesse : un parcours personnalisé, exigeant et humain.</p>",
+      sortOrder: 2
+    },
+    {
+      key: "about_values_listening",
+      category: "about",
+      label: "Valeur 1: Écoute",
+      type: "text",
+      value: "Ton corps, ton histoire, ton rythme.",
+      sortOrder: 3
+    },
+    {
+      key: "about_values_rigor",
+      category: "about",
+      label: "Valeur 2: Rigueur",
+      type: "text",
+      value: "Protocoles clairs, suivi précis, sécurité.",
+      sortOrder: 4
+    },
+    {
+      key: "about_values_kindness",
+      category: "about",
+      label: "Valeur 3: Bienveillance",
+      type: "text",
+      value: "Zéro jugement, zéro culpabilité.",
+      sortOrder: 5
+    },
+    // NUTRITION PAGE
+    {
+      key: "nutrition_hero_title",
+      category: "nutrition",
+      label: "Titre principal",
+      type: "text",
+      value: "La nutrition, moitié du chemin",
+      sortOrder: 1
+    },
+    {
+      key: "nutrition_hero_subtitle",
+      category: "nutrition",
+      label: "Sous-titre",
+      type: "text",
+      value: "Une approche durable, concrète, sans régime ni culpabilité.",
+      sortOrder: 2
+    },
+    {
+      key: "nutrition_method_step1",
+      category: "nutrition",
+      label: "Étape 1: Titre",
+      type: "text",
+      value: "1. Bilan nutritionnel",
+      sortOrder: 3
+    },
+    {
+      key: "nutrition_method_step1_desc",
+      category: "nutrition",
+      label: "Étape 1: Description",
+      type: "text",
+      value: "On analyse ton quotidien, tes contraintes, tes goûts et tes objectifs.",
+      sortOrder: 4
+    },
+    {
+      key: "nutrition_method_step2",
+      category: "nutrition",
+      label: "Étape 2: Titre",
+      type: "text",
+      value: "2. Plan personnalisé",
+      sortOrder: 5
+    },
+    {
+      key: "nutrition_method_step2_desc",
+      category: "nutrition",
+      label: "Étape 2: Description",
+      type: "text",
+      value: "Un plan alimentaire clair, avec recettes simples et alternatives.",
+      sortOrder: 6
+    },
+    {
+      key: "nutrition_method_step3",
+      category: "nutrition",
+      label: "Étape 3: Titre",
+      type: "text",
+      value: "3. Suivi & ajustements",
+      sortOrder: 7
+    },
+    {
+      key: "nutrition_method_step3_desc",
+      category: "nutrition",
+      label: "Étape 3: Description",
+      type: "text",
+      value: "Points réguliers pour ajuster selon tes progrès et ta vie.",
+      sortOrder: 8
+    },
+    {
+      key: "nutrition_philosophy_title",
+      category: "nutrition",
+      label: "Philosophie: Titre",
+      type: "text",
+      value: "Mange vrai. Mange juste.",
+      sortOrder: 9
+    },
+    {
+      key: "nutrition_philosophy_body",
+      category: "nutrition",
+      label: "Philosophie: Corps du texte",
+      type: "textarea",
+      value: "Je n'impose ni régime strict ni liste d'interdits. Je crois en une alimentation vivante, plaisir, construite autour de ton mode de vie. L'objectif : un rapport apaisé à la nourriture, et des résultats qui durent.",
+      sortOrder: 10
+    },
+    // TARIFS / SERVICES PAGE
+    {
+      key: "services_page_title",
+      category: "tarifs",
+      label: "Titre de la page",
+      type: "text",
+      value: "Un coaching qui s'adapte à ta vie",
+      sortOrder: 1
+    },
+    {
+      key: "services_page_subtitle",
+      category: "tarifs",
+      label: "Sous-titre",
+      type: "text",
+      value: "Quatre formats pour répondre à ta réalité. Toujours la même exigence, toujours le même cap.",
+      sortOrder: 2
+    },
+    // SERVICES FAQ
+    {
+      key: "faq_q1",
+      category: "services_faq",
+      label: "Question 1",
+      type: "text",
+      value: "Combien de temps dure une séance ?",
+      sortOrder: 1
+    },
+    {
+      key: "faq_a1",
+      category: "services_faq",
+      label: "Réponse 1",
+      type: "text",
+      value: "Généralement 60 minutes. Les premiers bilans durent 75 à 90 minutes.",
+      sortOrder: 2
+    },
+    {
+      key: "faq_q2",
+      category: "services_faq",
+      label: "Question 2",
+      type: "text",
+      value: "Je suis débutante, c'est adapté ?",
+      sortOrder: 3
+    },
+    {
+      key: "faq_a2",
+      category: "services_faq",
+      label: "Réponse 2",
+      type: "text",
+      value: "Absolument. Tout est construit en fonction de ton niveau et de ton rythme.",
+      sortOrder: 4
+    },
+    {
+      key: "faq_q3",
+      category: "services_faq",
+      label: "Question 3",
+      type: "text",
+      value: "Quel est le délai pour annuler ?",
+      sortOrder: 5
+    },
+    {
+      key: "faq_a3",
+      category: "services_faq",
+      label: "Réponse 3",
+      type: "text",
+      value: "Merci de prévenir au moins 24h à l'avance. Au-delà, la séance est due.",
+      sortOrder: 6
+    },
+    {
+      key: "faq_q4",
+      category: "services_faq",
+      label: "Question 4",
+      type: "text",
+      value: "Puis-je mixer plusieurs formats ?",
+      sortOrder: 7
+    },
+    {
+      key: "faq_a4",
+      category: "services_faq",
+      label: "Réponse 4",
+      type: "text",
+      value: "Oui, c'est même recommandé : un peu de salle, un peu d'extérieur, suivi en ligne.",
+      sortOrder: 8
+    },
+    // CONTACT INFO
+    {
+      key: "contact_address",
+      category: "contact_info",
+      label: "Adresse",
+      type: "text",
+      value: "Poliez-Pittet, Suisse",
+      sortOrder: 1
+    },
+    {
+      key: "contact_phone",
+      category: "contact_info",
+      label: "Téléphone",
+      type: "text",
+      value: "+41 (0)XX XXX XX XX",
+      sortOrder: 2
+    },
+    {
+      key: "contact_email",
+      category: "contact_info",
+      label: "Email",
+      type: "text",
+      value: "elodie@elodieduhayon.ch",
+      sortOrder: 3
+    },
+    {
+      key: "contact_instagram",
+      category: "contact_info",
+      label: "Instagram (URL)",
+      type: "text",
+      value: "https://instagram.com",
+      sortOrder: 4
+    },
+    // SEO
+    {
+      key: "seo_home_title",
+      category: "seo",
+      label: "Homepage - Meta Title",
+      type: "text",
+      value: "Coach Sportive & Nutrition à Poliez-Pittet",
+      sortOrder: 1
+    },
+    {
+      key: "seo_home_description",
+      category: "seo",
+      label: "Homepage - Meta Description",
+      type: "textarea",
+      value: "Coaching personnalisé à domicile, en extérieur, en salle et en ligne. Élodie Duhayon, infirmière et coach sportive.",
+      sortOrder: 2
+    },
+    {
+      key: "seo_about_title",
+      category: "seo",
+      label: "À propos - Meta Title",
+      type: "text",
+      value: "À propos d'Élodie Duhayon",
+      sortOrder: 3
+    },
+    {
+      key: "seo_about_description",
+      category: "seo",
+      label: "À propos - Meta Description",
+      type: "textarea",
+      value: "Infirmière diplômée d'État, coach sportive et nutritionniste à Poliez-Pittet.",
+      sortOrder: 4
+    },
+    {
+      key: "seo_nutrition_title",
+      category: "seo",
+      label: "Nutrition - Meta Title",
+      type: "text",
+      value: "Nutrition & Alimentation - Coach Élodie",
+      sortOrder: 5
+    },
+    {
+      key: "seo_nutrition_description",
+      category: "seo",
+      label: "Nutrition - Meta Description",
+      type: "textarea",
+      value: "Approche durable et personnalisée pour transformer ton rapport à la nourriture.",
+      sortOrder: 6
+    },
+    {
+      key: "seo_services_title",
+      category: "seo",
+      label: "Services - Meta Title",
+      type: "text",
+      value: "Coaching Sportif & Services",
+      sortOrder: 7
+    },
+    {
+      key: "seo_services_description",
+      category: "seo",
+      label: "Services - Meta Description",
+      type: "textarea",
+      value: "À domicile, en extérieur, en salle ou en ligne. Trouve le format qui te convient.",
+      sortOrder: 8
+    }
+  ];
+
+  for (const setting of siteSettings) {
+    await prisma.siteSetting.upsert({
+      where: { key: setting.key },
+      update: { value: setting.value, label: setting.label, category: setting.category, type: setting.type, sortOrder: setting.sortOrder },
+      create: setting
+    });
+  }
+
   console.log("Seed OK ✓");
 }
 

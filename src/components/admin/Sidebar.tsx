@@ -10,6 +10,7 @@ import {
   MessageSquareQuote,
   Package,
   Settings,
+  Edit3,
   LogOut
 } from "lucide-react";
 
@@ -20,6 +21,7 @@ const nav = [
   { href: "/admin/services", label: "Prestations", icon: Package },
   { href: "/admin/temoignages", label: "Témoignages", icon: MessageSquareQuote },
   { href: "/admin/blog", label: "Blog", icon: FileText },
+  { href: "/admin/contenu", label: "Contenu", icon: Edit3 },
   { href: "/admin/parametres", label: "Paramètres", icon: Settings }
 ];
 

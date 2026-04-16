@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { getSettings } from "@/lib/settings";
 import Link from "next/link";
 import { Check } from "lucide-react";
 
@@ -13,7 +14,30 @@ const perks: Record<string, string[]> = {
 };
 
 export default async function ServicesPage() {
-  const services = await prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []);
+  const [services, faqSettings] = await Promise.all([
+    prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
+    getSettings("services_faq").catch(() => ({}))
+  ]);
+
+  // Build FAQ items from settings
+  const faqItems = [
+    {
+      q: faqSettings["faq_q1"] || "Combien de temps dure une séance ?",
+      a: faqSettings["faq_a1"] || "Généralement 60 minutes. Les premiers bilans durent 75 à 90 minutes."
+    },
+    {
+      q: faqSettings["faq_q2"] || "Je suis débutante, c'est adapté ?",
+      a: faqSettings["faq_a2"] || "Absolument. Tout est construit en fonction de ton niveau et de ton rythme."
+    },
+    {
+      q: faqSettings["faq_q3"] || "Quel est le délai pour annuler ?",
+      a: faqSettings["faq_a3"] || "Merci de prévenir au moins 24h à l'avance. Au-delà, la séance est due."
+    },
+    {
+      q: faqSettings["faq_q4"] || "Puis-je mixer plusieurs formats ?",
+      a: faqSettings["faq_a4"] || "Oui, c'est même recommandé : un peu de salle, un peu d'extérieur, suivi en ligne."
+    }
+  ];
 
   return (
     <>
@@ -59,24 +83,7 @@ export default async function ServicesPage() {
           <p className="eyebrow text-center">FAQ</p>
           <h2 className="section-title mt-3 text-center">Questions fréquentes</h2>
           <div className="max-w-3xl mx-auto mt-10 space-y-3">
-            {[
-              {
-                q: "Combien de temps dure une séance ?",
-                a: "Généralement 60 minutes. Les premiers bilans durent 75 à 90 minutes."
-              },
-              {
-                q: "Je suis débutante, c'est adapté ?",
-                a: "Absolument. Tout est construit en fonction de ton niveau et de ton rythme."
-              },
-              {
-                q: "Quel est le délai pour annuler ?",
-                a: "Merci de prévenir au moins 24h à l'avance. Au-delà, la séance est due."
-              },
-              {
-                q: "Puis-je mixer plusieurs formats ?",
-                a: "Oui, c'est même recommandé : un peu de salle, un peu d'extérieur, suivi en ligne."
-              }
-            ].map((f) => (
+            {faqItems.map((f) => (
               <details key={f.q} className="bg-white rounded-xl2 p-5 group shadow-card">
                 <summary className="cursor-pointer font-semibold flex items-center justify-between">
                   {f.q}

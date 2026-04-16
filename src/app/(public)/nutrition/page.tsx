@@ -1,10 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getSettings } from "@/lib/settings";
 import { ClipboardList, Salad, LineChart } from "lucide-react";
 
 export const metadata = { title: "Nutrition" };
 
-export default function NutritionPage() {
+export default async function NutritionPage() {
+  const settings = await getSettings("nutrition").catch(() => ({}));
+
+  const heroTitle = settings["nutrition_hero_title"] || "La nutrition, moitié du chemin";
+  const heroSubtitle = settings["nutrition_hero_subtitle"] || "Une approche durable, concrète, sans régime ni culpabilité.";
+  const step1Title = settings["nutrition_method_step1"] || "1. Bilan nutritionnel";
+  const step1Desc = settings["nutrition_method_step1_desc"] || "On analyse ton quotidien, tes contraintes, tes goûts et tes objectifs.";
+  const step2Title = settings["nutrition_method_step2"] || "2. Plan personnalisé";
+  const step2Desc = settings["nutrition_method_step2_desc"] || "Un plan alimentaire clair, avec recettes simples et alternatives.";
+  const step3Title = settings["nutrition_method_step3"] || "3. Suivi & ajustements";
+  const step3Desc = settings["nutrition_method_step3_desc"] || "Points réguliers pour ajuster selon tes progrès et ta vie.";
+  const philTitle = settings["nutrition_philosophy_title"] || "Mange vrai. Mange juste.";
+  const philBody = settings["nutrition_philosophy_body"] || "Je n'impose ni régime strict ni liste d'interdits. Je crois en une alimentation vivante, plaisir, construite autour de ton mode de vie. L'objectif : un rapport apaisé à la nourriture, et des résultats qui durent.";
   return (
     <>
       <section className="relative min-h-[60vh] flex items-center text-brand-ivory overflow-hidden">
@@ -22,10 +35,10 @@ export default function NutritionPage() {
         <div className="container-editorial relative py-24">
           <p className="eyebrow text-brand-roseLight">Nutrition</p>
           <h1 className="mt-3 font-serif text-display-lg font-bold max-w-3xl">
-            La nutrition, <em>moitié du chemin</em>
+            {heroTitle}
           </h1>
           <p className="mt-5 max-w-2xl text-brand-ivory/80 text-lg">
-            Une approche durable, concrète, sans régime ni culpabilité.
+            {heroSubtitle}
           </p>
         </div>
       </section>
@@ -38,9 +51,9 @@ export default function NutritionPage() {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            { icon: ClipboardList, title: "1. Bilan nutritionnel", body: "On analyse ton quotidien, tes contraintes, tes goûts et tes objectifs." },
-            { icon: Salad, title: "2. Plan personnalisé", body: "Un plan alimentaire clair, avec recettes simples et alternatives." },
-            { icon: LineChart, title: "3. Suivi & ajustements", body: "Points réguliers pour ajuster selon tes progrès et ta vie." }
+            { icon: ClipboardList, title: step1Title, body: step1Desc },
+            { icon: Salad, title: step2Title, body: step2Desc },
+            { icon: LineChart, title: step3Title, body: step3Desc }
           ].map(({ icon: Icon, title, body }) => (
             <div key={title} className="bg-brand-nude rounded-xl2 p-8">
               <Icon className="text-brand-rose" size={28} />
@@ -64,11 +77,9 @@ export default function NutritionPage() {
           </div>
           <div>
             <p className="eyebrow">Ma philosophie</p>
-            <h2 className="section-title mt-3">Mange vrai. Mange juste.</h2>
+            <h2 className="section-title mt-3">{philTitle}</h2>
             <p className="mt-5 leading-relaxed text-brand-dark/90">
-              Je n'impose ni régime strict ni liste d'interdits. Je crois en une alimentation
-              vivante, plaisir, construite autour de ton mode de vie. L'objectif : un rapport
-              apaisé à la nourriture, et des résultats qui durent.
+              {philBody}
             </p>
             <ul className="mt-6 space-y-2 text-sm">
               <li>• Produits bruts et de saison en priorité</li>

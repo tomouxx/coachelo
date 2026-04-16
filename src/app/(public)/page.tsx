@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
+import { getSettings } from "@/lib/settings";
 import { ArrowRight, Home, Trees, Dumbbell, Laptop, Check } from "lucide-react";
 
 export const revalidate = 60;
@@ -13,11 +14,17 @@ const locationIcon: Record<string, any> = {
 };
 
 export default async function HomePage() {
-  const [services, testimonials, latestPosts] = await Promise.all([
+  const [services, testimonials, latestPosts, settings] = await Promise.all([
     prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
     prisma.testimonial.findMany({ where: { published: true }, orderBy: { sortOrder: "asc" }, take: 3 }).catch(() => []),
-    prisma.blogPost.findMany({ where: { published: true }, orderBy: { publishedAt: "desc" }, take: 3 }).catch(() => [])
+    prisma.blogPost.findMany({ where: { published: true }, orderBy: { publishedAt: "desc" }, take: 3 }).catch(() => []),
+    getSettings("hero").catch(() => ({}))
   ]);
+
+  // Get hero content with fallbacks
+  const heroEyebrow = settings["home_hero_eyebrow"] || "Coach sportive & nutrition · Suisse";
+  const heroTitle = settings["home_hero_title"] || "Coach sportive & nutrition à ton rythme";
+  const heroSubtitle = settings["home_hero_subtitle"] || "Coaching personnalisé à domicile, en extérieur, en salle et en ligne — depuis Poliez-Pittet.";
 
   return (
     <>
@@ -37,13 +44,13 @@ export default async function HomePage() {
 
         <div className="container-editorial relative grid md:grid-cols-2 py-24 gap-12">
           <div>
-            <p className="eyebrow text-brand-roseLight">Coach sportive & nutrition · Suisse</p>
+            <p className="eyebrow text-brand-roseLight">{heroEyebrow}</p>
             <h1 className="mt-5 font-serif font-bold text-display-lg md:text-display-xl leading-tight">
-              Coach sportive &amp; nutrition <em className="text-brand-roseLight">à ton rythme</em>
+              {heroTitle.replace(/à ton rythme/, '<em class="text-brand-roseLight">à ton rythme</em>').split('<em')[0]}
+              <em className="text-brand-roseLight">à ton rythme</em>
             </h1>
             <p className="mt-6 max-w-lg text-brand-ivory/80 text-lg leading-relaxed">
-              Coaching personnalisé à domicile, en extérieur, en salle et en ligne — depuis Poliez-Pittet.
-              Une approche exigeante, humaine et durable.
+              {heroSubtitle}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/contact" className="btn btn-primary">

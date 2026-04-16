@@ -100,6 +100,17 @@ model PageContent {
   updatedAt DateTime @updatedAt
 }
 
+model SiteSetting {
+  id        Int       @id @default(autoincrement())
+  key       String    @unique
+  category  String    @default("general")
+  label     String    @default("")
+  type      String    @default("text")
+  value     String
+  sortOrder Int       @default(0)
+  updatedAt DateTime  @updatedAt
+}
+
 model Testimonial {
   id         String   @id @default(cuid())
   name       String
