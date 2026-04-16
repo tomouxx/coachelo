@@ -1,10 +1,10 @@
 import { getSettings } from "@/lib/settings";
-import { Mail, Phone, MapPin, Clock, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Instagram, CheckCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = { title: "Contact" };
 
-export default async function ContactPage() {
+export default async function ContactPage({ searchParams }: { searchParams: { success?: string; error?: string } }) {
   const [contactS, pageS] = await Promise.all([
     getSettings("contact_info").catch((): Record<string, string> => ({})),
     getSettings("contact_page").catch((): Record<string, string> => ({}))
@@ -14,6 +14,9 @@ export default async function ContactPage() {
   const pg = (key: string, fallback: string) => pageS[key] || fallback;
   const instagram = c("contact_instagram", "https://instagram.com");
   const igHandle = instagram.includes("instagram.com/") ? "@" + instagram.split("instagram.com/")[1].replace(/\/$/, "") : "@elodieduhayon";
+
+  const success = searchParams.success === "1";
+  const error = searchParams.error;
 
   return (
     <>
@@ -28,6 +31,26 @@ export default async function ContactPage() {
       <section className="container-editorial pb-24 grid gap-10 lg:grid-cols-2">
         {/* Formulaire de contact */}
         <div>
+          {success && (
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-start gap-3">
+              <CheckCircle size={20} className="text-green-600 mt-0.5 shrink-0" />
+              <div>
+                <p className="font-semibold text-green-800">Message envoyé !</p>
+                <p className="text-sm text-green-700">Merci pour ton message. Je te réponds dans les plus brefs délais.</p>
+              </div>
+            </div>
+          )}
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
+              <AlertCircle size={20} className="text-red-600 mt-0.5 shrink-0" />
+              <div>
+                <p className="font-semibold text-red-800">Erreur</p>
+                <p className="text-sm text-red-700">
+                  {error === "validation" ? "Certains champs sont invalides. Vérifie et réessaie." : "Une erreur est survenue. Réessaie ou contacte-moi directement par email."}
+                </p>
+              </div>
+            </div>
+          )}
           <h2 className="font-serif text-2xl font-semibold mb-6">Envoie-moi un message</h2>
           <form action="/api/contact" method="post" className="space-y-4">
             <div className="grid md:grid-cols-2 gap-3">
