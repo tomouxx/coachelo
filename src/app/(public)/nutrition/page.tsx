@@ -6,9 +6,10 @@ import { ClipboardList, Salad, LineChart } from "lucide-react";
 export const metadata = { title: "Nutrition" };
 
 export default async function NutritionPage() {
-  const [settings, images] = await Promise.all([
+  const [settings, images, extraS] = await Promise.all([
     getSettings("nutrition").catch((): Record<string, string> => ({})),
-    getSettings("images").catch((): Record<string, string> => ({}))
+    getSettings("images").catch((): Record<string, string> => ({})),
+    getSettings("nutrition_extra").catch((): Record<string, string> => ({}))
   ]);
 
   const imgNutritionHero = images["img_nutrition_hero"] || "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80";
@@ -23,29 +24,24 @@ export default async function NutritionPage() {
   const step3Title = settings["nutrition_method_step3"] || "3. Suivi & ajustements";
   const step3Desc = settings["nutrition_method_step3_desc"] || "Points réguliers pour ajuster selon tes progrès et ta vie.";
   const philTitle = settings["nutrition_philosophy_title"] || "Mange vrai. Mange juste.";
-  const philBody = settings["nutrition_philosophy_body"] || "Je n'impose ni régime strict ni liste d'interdits. Je crois en une alimentation vivante, plaisir, construite autour de ton mode de vie. L'objectif : un rapport apaisé à la nourriture, et des résultats qui durent.";
+  const philBody = settings["nutrition_philosophy_body"] || "Je n'impose ni régime strict ni liste d'interdits. Je crois en une alimentation vivante, plaisir, construite autour de ton mode de vie.";
+
+  const bullets = (extraS["nutrition_bullets"] || "Produits bruts et de saison en priorité\nPas d'interdits, pas de calculs obsessionnels\nPrise en compte des habitudes familiales\nAlliance coaching sport + nutrition pour maximiser les résultats").split("\n").filter(Boolean);
+  const ctaTitle = extraS["nutrition_cta_title"] || "Envie d'essayer ?";
+
   return (
     <>
       <section className="relative min-h-[60vh] flex items-center text-brand-ivory overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{
-            backgroundImage:
-              `url('${imgNutritionHero}')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}
+          style={{ backgroundImage: `url('${imgNutritionHero}')`, backgroundSize: "cover", backgroundPosition: "center" }}
           aria-hidden
         />
         <div className="absolute inset-0 bg-brand-dark/55" aria-hidden />
         <div className="container-editorial relative py-24">
           <p className="eyebrow text-brand-roseLight">Nutrition</p>
-          <h1 className="mt-3 font-serif text-display-lg font-bold max-w-3xl">
-            {heroTitle}
-          </h1>
-          <p className="mt-5 max-w-2xl text-brand-ivory/80 text-lg">
-            {heroSubtitle}
-          </p>
+          <h1 className="mt-3 font-serif text-display-lg font-bold max-w-3xl">{heroTitle}</h1>
+          <p className="mt-5 max-w-2xl text-brand-ivory/80 text-lg">{heroSubtitle}</p>
         </div>
       </section>
 
@@ -74,35 +70,25 @@ export default async function NutritionPage() {
       <section className="bg-brand-nude">
         <div className="container-editorial py-24 grid md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] rounded-xl2 overflow-hidden">
-            <Image
-              src={imgNutritionPhil}
-              alt="Bol healthy"
-              fill
-              className="object-cover"
-            />
+            <Image src={imgNutritionPhil} alt="Alimentation saine" fill className="object-cover" />
           </div>
           <div>
             <p className="eyebrow">Ma philosophie</p>
             <h2 className="section-title mt-3">{philTitle}</h2>
-            <p className="mt-5 leading-relaxed text-brand-dark/90">
-              {philBody}
-            </p>
+            <p className="mt-5 leading-relaxed text-brand-dark/90">{philBody}</p>
             <ul className="mt-6 space-y-2 text-sm">
-              <li>• Produits bruts et de saison en priorité</li>
-              <li>• Pas d'interdits, pas de calculs obsessionnels</li>
-              <li>• Prise en compte des habitudes familiales</li>
-              <li>• Alliance coaching sport + nutrition pour maximiser les résultats</li>
+              {bullets.map((b) => (
+                <li key={b}>• {b}</li>
+              ))}
             </ul>
-            <Link href="/contact" className="mt-8 btn btn-primary inline-block">
-              Prendre un bilan nutrition
-            </Link>
+            <Link href="/contact" className="mt-8 btn btn-primary inline-block">Prendre un bilan nutrition</Link>
           </div>
         </div>
       </section>
 
       <section className="bg-brand-dark text-brand-ivory">
         <div className="container-editorial py-20 text-center">
-          <h2 className="font-serif text-display-md font-bold">Envie d'essayer ?</h2>
+          <h2 className="font-serif text-display-md font-bold">{ctaTitle}</h2>
           <Link href="/contact" className="mt-6 btn btn-primary inline-block">Appel découverte offert</Link>
         </div>
       </section>

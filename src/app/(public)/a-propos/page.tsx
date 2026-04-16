@@ -6,57 +6,39 @@ import { Heart, ShieldCheck, Sparkles } from "lucide-react";
 export const metadata = { title: "À propos" };
 
 export default async function AboutPage() {
-  const [settings, images] = await Promise.all([
+  const [aboutS, extraS, images] = await Promise.all([
     getSettings("about").catch((): Record<string, string> => ({})),
+    getSettings("about_extra").catch((): Record<string, string> => ({})),
     getSettings("images").catch((): Record<string, string> => ({}))
   ]);
 
   const imgPortrait = images["img_portrait_elodie"] || "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=90";
+  const introText = aboutS["about_page_intro_text"] || "Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à observer, écouter, respecter un corps.";
+  const listening = aboutS["about_values_listening"] || "Ton corps, ton histoire, ton rythme.";
+  const rigor = aboutS["about_values_rigor"] || "Protocoles clairs, suivi précis, sécurité.";
+  const kindness = aboutS["about_values_kindness"] || "Zéro jugement, zéro culpabilité.";
 
-  const introText = settings["about_page_intro_text"] || "Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à observer, écouter, respecter un corps.";
-  const listening = settings["about_values_listening"] || "Ton corps, ton histoire, ton rythme.";
-  const rigor = settings["about_values_rigor"] || "Protocoles clairs, suivi précis, sécurité.";
-  const kindness = settings["about_values_kindness"] || "Zéro jugement, zéro culpabilité.";
+  const pageTitle = extraS["about_page_title"] || "De soignante à coach, au service de ton bien-être";
+  const bioBody = extraS["about_bio_body"] || "<p>Infirmière diplômée d'État, j'ai passé huit années en milieu hospitalier et en EHPAD. La gériatrie et les soins palliatifs m'ont enseigné la rigueur, la patience et la lecture fine du corps humain.</p><p>J'ai choisi de déplacer mon action : plutôt que de réparer, accompagner en amont. Le sport et la nutrition sont devenus mon nouveau champ d'intervention.</p><p>Aujourd'hui, je coache à domicile, en extérieur, en salle et en ligne depuis Poliez-Pittet.</p>";
+  const credentials = (extraS["about_credentials"] || "Infirmière Diplômée d'État (IDE) — 2012\nQualification gériatrique — 2014\nFormation humanitaire — 2017\nAFGSU 2 — 2020\nCertification coach sportif\nSpécialisation nutrition sportive\nFrançais & Anglais (C2)").split("\n").filter(Boolean);
+  const ctaTitle = extraS["about_cta_title"] || "On se rencontre ?";
 
   return (
     <>
       <section className="container-editorial pt-20 pb-12">
         <p className="eyebrow">À propos</p>
-        <h1 className="section-title mt-3 max-w-3xl">
-          De soignante à coach, au service de ton bien-être
-        </h1>
-        <p className="mt-6 max-w-3xl text-lg text-brand-dark/85 leading-relaxed">
-          {introText}
-        </p>
+        <h1 className="section-title mt-3 max-w-3xl">{pageTitle}</h1>
+        <p className="mt-6 max-w-3xl text-lg text-brand-dark/85 leading-relaxed">{introText}</p>
       </section>
 
       <section className="container-editorial grid md:grid-cols-2 gap-12 pb-24 items-start">
         <div className="relative aspect-[3/4] rounded-xl2 overflow-hidden">
-          <Image
-            src={imgPortrait}
-            alt="Élodie"
-            fill
-            className="object-cover"
-          />
+          <Image src={imgPortrait} alt="Élodie" fill className="object-cover" />
         </div>
-        <div className="space-y-5 text-brand-dark/90 leading-relaxed">
-          <p>
-            Infirmière diplômée d'État, j'ai passé huit années en milieu hospitalier et en EHPAD,
-            notamment à l'Hôpital Privé La Porte Verte (Versailles), au Centre Hospitalier
-            Ambroise Paré (Mons, Belgique) et aux Logis Douaisiens. La gériatrie et les soins
-            palliatifs m'ont enseigné la rigueur, la patience et la lecture fine du corps humain.
-          </p>
-          <p>
-            J'ai choisi de déplacer mon action : plutôt que de réparer, accompagner en amont. Le
-            sport et la nutrition sont devenus mon nouveau champ d'intervention pour aider chacun
-            à vivre mieux, plus longtemps, et en confiance avec son corps.
-          </p>
-          <p>
-            Aujourd'hui, je coache à domicile, en extérieur, en salle et en ligne depuis
-            Poliez-Pittet. J'accompagne femmes et hommes de tous âges, tous niveaux, avec une
-            seule promesse : un parcours personnalisé, exigeant et humain.
-          </p>
-        </div>
+        <div
+          className="space-y-5 text-brand-dark/90 leading-relaxed prose prose-p:my-3"
+          dangerouslySetInnerHTML={{ __html: bioBody }}
+        />
       </section>
 
       {/* Valeurs */}
@@ -87,15 +69,7 @@ export default async function AboutPage() {
         <p className="eyebrow">Diplômes & certifications</p>
         <h2 className="section-title mt-3">Un bagage solide</h2>
         <ul className="mt-10 grid gap-4 md:grid-cols-2">
-          {[
-            "Infirmière Diplômée d'État (IDE) — 2012",
-            "Qualification gériatrique — 2014",
-            "Formation humanitaire — 2017",
-            "AFGSU 2 — 2020",
-            "Certification coach sportif",
-            "Spécialisation nutrition sportive",
-            "Français & Anglais (C2)"
-          ].map((c) => (
+          {credentials.map((c) => (
             <li key={c} className="flex items-start gap-3 bg-brand-ivory border border-brand-divider rounded-xl2 p-5">
               <span className="mt-1 w-2 h-2 rounded-full bg-brand-rose" />
               <span>{c}</span>
@@ -106,7 +80,7 @@ export default async function AboutPage() {
 
       <section className="bg-brand-dark text-brand-ivory">
         <div className="container-editorial py-20 text-center">
-          <h2 className="font-serif text-display-md font-bold">On se rencontre ?</h2>
+          <h2 className="font-serif text-display-md font-bold">{ctaTitle}</h2>
           <div className="mt-6 flex justify-center gap-3">
             <Link href="/contact" className="btn btn-primary">Réserver une séance</Link>
           </div>

@@ -479,6 +479,543 @@ async function main() {
       value: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80",
       sortOrder: 5
     },
+    // HOME SECTIONS (all non-hero homepage content)
+    {
+      key: "home_about_eyebrow",
+      category: "home_sections",
+      label: "Section À propos - Eyebrow",
+      type: "text",
+      value: "À propos",
+      sortOrder: 1
+    },
+    {
+      key: "home_about_title",
+      category: "home_sections",
+      label: "Section À propos - Titre",
+      type: "text",
+      value: "De soignante à coach",
+      sortOrder: 2
+    },
+    {
+      key: "home_about_text",
+      category: "home_sections",
+      label: "Section À propos - Texte",
+      type: "textarea",
+      value: "Infirmière diplômée d'État avec plus de huit années d'expérience en gériatrie et soins palliatifs, j'ai choisi d'accompagner la santé en amont — par le mouvement et la nutrition. Mon regard de soignante change tout : j'écoute ton corps avant de pousser.",
+      sortOrder: 3
+    },
+    {
+      key: "home_credential",
+      category: "home_sections",
+      label: "Section À propos - Crédentiel",
+      type: "text",
+      value: "Infirmière Diplômée d'État · Certifiée coach sportif",
+      sortOrder: 4
+    },
+    {
+      key: "home_services_eyebrow",
+      category: "home_sections",
+      label: "Section Services - Eyebrow",
+      type: "text",
+      value: "Services",
+      sortOrder: 5
+    },
+    {
+      key: "home_services_title",
+      category: "home_sections",
+      label: "Section Services - Titre",
+      type: "text",
+      value: "Accompagnements sur mesure",
+      sortOrder: 6
+    },
+    {
+      key: "home_nutrition_eyebrow",
+      category: "home_sections",
+      label: "Section Nutrition - Eyebrow",
+      type: "text",
+      value: "Nutrition",
+      sortOrder: 7
+    },
+    {
+      key: "home_nutrition_title",
+      category: "home_sections",
+      label: "Section Nutrition - Titre",
+      type: "text",
+      value: "La nutrition, pilier de ta transformation",
+      sortOrder: 8
+    },
+    {
+      key: "home_nutrition_text",
+      category: "home_sections",
+      label: "Section Nutrition - Texte",
+      type: "textarea",
+      value: "Pas de régime, pas de culpabilité. Une approche durable, concrète, alignée avec ta vie.",
+      sortOrder: 9
+    },
+    {
+      key: "home_testimonials_eyebrow",
+      category: "home_sections",
+      label: "Section Témoignages - Eyebrow",
+      type: "text",
+      value: "Témoignages",
+      sortOrder: 10
+    },
+    {
+      key: "home_testimonials_title",
+      category: "home_sections",
+      label: "Section Témoignages - Titre",
+      type: "text",
+      value: "Leur expérience avec Élodie",
+      sortOrder: 11
+    },
+    {
+      key: "home_steps_eyebrow",
+      category: "home_sections",
+      label: "Section Étapes - Eyebrow",
+      type: "text",
+      value: "Comment ça se passe",
+      sortOrder: 12
+    },
+    {
+      key: "home_steps_title",
+      category: "home_sections",
+      label: "Section Étapes - Titre",
+      type: "text",
+      value: "Quatre étapes simples",
+      sortOrder: 13
+    },
+    {
+      key: "home_step1_title",
+      category: "home_sections",
+      label: "Étape 1 - Titre",
+      type: "text",
+      value: "Appel découverte",
+      sortOrder: 14
+    },
+    {
+      key: "home_step1_desc",
+      category: "home_sections",
+      label: "Étape 1 - Description",
+      type: "text",
+      value: "15 min offerts pour faire connaissance.",
+      sortOrder: 15
+    },
+    {
+      key: "home_step2_title",
+      category: "home_sections",
+      label: "Étape 2 - Titre",
+      type: "text",
+      value: "Bilan & objectifs",
+      sortOrder: 16
+    },
+    {
+      key: "home_step2_desc",
+      category: "home_sections",
+      label: "Étape 2 - Description",
+      type: "text",
+      value: "On définit ensemble un cap clair.",
+      sortOrder: 17
+    },
+    {
+      key: "home_step3_title",
+      category: "home_sections",
+      label: "Étape 3 - Titre",
+      type: "text",
+      value: "Programme sur mesure",
+      sortOrder: 18
+    },
+    {
+      key: "home_step3_desc",
+      category: "home_sections",
+      label: "Étape 3 - Description",
+      type: "text",
+      value: "Un plan adapté à ta vie.",
+      sortOrder: 19
+    },
+    {
+      key: "home_step4_title",
+      category: "home_sections",
+      label: "Étape 4 - Titre",
+      type: "text",
+      value: "Suivi & résultats",
+      sortOrder: 20
+    },
+    {
+      key: "home_step4_desc",
+      category: "home_sections",
+      label: "Étape 4 - Description",
+      type: "text",
+      value: "On ajuste, on progresse, on célèbre.",
+      sortOrder: 21
+    },
+    {
+      key: "home_blog_eyebrow",
+      category: "home_sections",
+      label: "Section Blog - Eyebrow",
+      type: "text",
+      value: "Journal",
+      sortOrder: 22
+    },
+    {
+      key: "home_blog_title",
+      category: "home_sections",
+      label: "Section Blog - Titre",
+      type: "text",
+      value: "Conseils sport & nutrition",
+      sortOrder: 23
+    },
+    {
+      key: "home_cta_title",
+      category: "home_sections",
+      label: "Section CTA - Titre",
+      type: "text",
+      value: "Prête à te lancer ?",
+      sortOrder: 24
+    },
+    // ABOUT EXTRA (about page remaining hardcoded content)
+    {
+      key: "about_page_title",
+      category: "about_extra",
+      label: "Titre de la page À propos",
+      type: "text",
+      value: "De soignante à coach, au service de ton bien-être",
+      sortOrder: 1
+    },
+    {
+      key: "about_bio_body",
+      category: "about_extra",
+      label: "Biographie - Corps du texte",
+      type: "richtext",
+      value: "<p>Infirmière diplômée d'État, j'ai passé huit années en milieu hospitalier et en EHPAD, notamment à l'Hôpital Privé La Porte Verte (Versailles), au Centre Hospitalier Ambroise Paré (Mons, Belgique) et aux Logis Douaisiens. La gériatrie et les soins palliatifs m'ont enseigné la rigueur, la patience et la lecture fine du corps humain.</p><p>J'ai choisi de déplacer mon action : plutôt que de réparer, accompagner en amont. Le sport et la nutrition sont devenus mon nouveau champ d'intervention pour aider chacun à vivre mieux, plus longtemps, et en confiance avec son corps.</p><p>Aujourd'hui, je coache à domicile, en extérieur, en salle et en ligne depuis Poliez-Pittet. J'accompagne femmes et hommes de tous âges, tous niveaux, avec une seule promesse : un parcours personnalisé, exigeant et humain.</p>",
+      sortOrder: 2
+    },
+    {
+      key: "about_credentials",
+      category: "about_extra",
+      label: "Crédentiels",
+      type: "textarea",
+      value: "Infirmière Diplômée d'État (IDE) — 2012\nQualification gériatrique — 2014\nFormation humanitaire — 2017\nAFGSU 2 — 2020\nCertification coach sportif\nSpécialisation nutrition sportive\nFrançais & Anglais (C2)",
+      sortOrder: 3
+    },
+    {
+      key: "about_cta_title",
+      category: "about_extra",
+      label: "CTA - Titre",
+      type: "text",
+      value: "On se rencontre ?",
+      sortOrder: 4
+    },
+    // NUTRITION EXTRA (nutrition page remaining hardcoded content)
+    {
+      key: "nutrition_bullets",
+      category: "nutrition_extra",
+      label: "Points clés",
+      type: "textarea",
+      value: "Produits bruts et de saison en priorité\nPas d'interdits, pas de calculs obsessionnels\nPrise en compte des habitudes familiales\nAlliance coaching sport + nutrition pour maximiser les résultats",
+      sortOrder: 1
+    },
+    {
+      key: "nutrition_cta_title",
+      category: "nutrition_extra",
+      label: "CTA - Titre",
+      type: "text",
+      value: "Envie d'essayer ?",
+      sortOrder: 2
+    },
+    // TARIFS PLANS (ALL pricing plan data)
+    {
+      key: "tarif_plan1_name",
+      category: "tarifs_plans",
+      label: "Plan 1 - Nom",
+      type: "text",
+      value: "Découverte",
+      sortOrder: 1
+    },
+    {
+      key: "tarif_plan1_price",
+      category: "tarifs_plans",
+      label: "Plan 1 - Prix",
+      type: "text",
+      value: "90 CHF",
+      sortOrder: 2
+    },
+    {
+      key: "tarif_plan1_unit",
+      category: "tarifs_plans",
+      label: "Plan 1 - Unité",
+      type: "text",
+      value: "la séance",
+      sortOrder: 3
+    },
+    {
+      key: "tarif_plan1_features",
+      category: "tarifs_plans",
+      label: "Plan 1 - Caractéristiques",
+      type: "textarea",
+      value: "Séance de 60 minutes\nBilan initial inclus\nÀ domicile, extérieur ou salle\nSans engagement",
+      sortOrder: 4
+    },
+    {
+      key: "tarif_plan1_cta",
+      category: "tarifs_plans",
+      label: "Plan 1 - CTA",
+      type: "text",
+      value: "Réserver",
+      sortOrder: 5
+    },
+    {
+      key: "tarif_plan2_name",
+      category: "tarifs_plans",
+      label: "Plan 2 - Nom",
+      type: "text",
+      value: "Transformation",
+      sortOrder: 6
+    },
+    {
+      key: "tarif_plan2_price",
+      category: "tarifs_plans",
+      label: "Plan 2 - Prix",
+      type: "text",
+      value: "790 CHF",
+      sortOrder: 7
+    },
+    {
+      key: "tarif_plan2_unit",
+      category: "tarifs_plans",
+      label: "Plan 2 - Unité",
+      type: "text",
+      value: "pack 10 séances",
+      sortOrder: 8
+    },
+    {
+      key: "tarif_plan2_features",
+      category: "tarifs_plans",
+      label: "Plan 2 - Caractéristiques",
+      type: "textarea",
+      value: "10 séances de coaching\nBilan nutrition inclus\nPlan d'entraînement personnalisé\nSuivi WhatsApp\nValidité 4 mois",
+      sortOrder: 9
+    },
+    {
+      key: "tarif_plan2_cta",
+      category: "tarifs_plans",
+      label: "Plan 2 - CTA",
+      type: "text",
+      value: "Choisir ce pack",
+      sortOrder: 10
+    },
+    {
+      key: "tarif_plan2_tag",
+      category: "tarifs_plans",
+      label: "Plan 2 - Tag",
+      type: "text",
+      value: "Le plus populaire",
+      sortOrder: 11
+    },
+    {
+      key: "tarif_plan3_name",
+      category: "tarifs_plans",
+      label: "Plan 3 - Nom",
+      type: "text",
+      value: "Sur mesure",
+      sortOrder: 12
+    },
+    {
+      key: "tarif_plan3_price",
+      category: "tarifs_plans",
+      label: "Plan 3 - Prix",
+      type: "text",
+      value: "Sur devis",
+      sortOrder: 13
+    },
+    {
+      key: "tarif_plan3_unit",
+      category: "tarifs_plans",
+      label: "Plan 3 - Unité",
+      type: "text",
+      value: "",
+      sortOrder: 14
+    },
+    {
+      key: "tarif_plan3_features",
+      category: "tarifs_plans",
+      label: "Plan 3 - Caractéristiques",
+      type: "textarea",
+      value: "Format 100% adapté\nCoaching + nutrition\nPrésentiel + en ligne\nAccompagnement longue durée",
+      sortOrder: 15
+    },
+    {
+      key: "tarif_plan3_cta",
+      category: "tarifs_plans",
+      label: "Plan 3 - CTA",
+      type: "text",
+      value: "Demander un devis",
+      sortOrder: 16
+    },
+    {
+      key: "tarif_footer_note",
+      category: "tarifs_plans",
+      label: "Note de bas de page",
+      type: "text",
+      value: "Tarifs en francs suisses (CHF). Déplacement dans un rayon de 15 km autour de Poliez-Pittet inclus.",
+      sortOrder: 17
+    },
+    {
+      key: "tarif_page_description",
+      category: "tarifs_plans",
+      label: "Description de la page",
+      type: "textarea",
+      value: "Première séance découverte offerte. Paiement par virement, TWINT ou facture. Échelonnement possible pour le pack Transformation.",
+      sortOrder: 18
+    },
+    // CONTACT PAGE (contact page specific text)
+    {
+      key: "contact_page_eyebrow",
+      category: "contact_page",
+      label: "Eyebrow",
+      type: "text",
+      value: "Contact",
+      sortOrder: 1
+    },
+    {
+      key: "contact_page_title",
+      category: "contact_page",
+      label: "Titre",
+      type: "text",
+      value: "Réservons ta première séance",
+      sortOrder: 2
+    },
+    {
+      key: "contact_page_description",
+      category: "contact_page",
+      label: "Description",
+      type: "textarea",
+      value: "Trois chemins possibles : réserver un créneau, m'envoyer un message, ou planifier un appel découverte offert.",
+      sortOrder: 3
+    },
+    {
+      key: "contact_discovery_title",
+      category: "contact_page",
+      label: "Titre appel découverte",
+      type: "text",
+      value: "Appel découverte 15 min",
+      sortOrder: 4
+    },
+    {
+      key: "contact_discovery_text",
+      category: "contact_page",
+      label: "Texte appel découverte",
+      type: "textarea",
+      value: "On fait connaissance, on parle de tes objectifs, on voit si on est faites pour travailler ensemble. Sans engagement.",
+      sortOrder: 5
+    },
+    {
+      key: "contact_discovery_cta",
+      category: "contact_page",
+      label: "CTA appel découverte",
+      type: "text",
+      value: "Planifier mon appel",
+      sortOrder: 6
+    },
+    {
+      key: "contact_hours",
+      category: "contact_page",
+      label: "Horaires",
+      type: "text",
+      value: "Lun-Ven 8h-19h · Sam 9h-13h",
+      sortOrder: 7
+    },
+    // FOOTER (footer content)
+    {
+      key: "footer_tagline",
+      category: "footer",
+      label: "Tagline",
+      type: "text",
+      value: "Coach sportive & nutrition à Poliez-Pittet et en ligne. Infirmière Diplômée d'État.",
+      sortOrder: 1
+    },
+    {
+      key: "footer_newsletter_text",
+      category: "footer",
+      label: "Texte newsletter",
+      type: "text",
+      value: "Reçois mes conseils sport & nutrition.",
+      sortOrder: 2
+    },
+    // SERVICES PAGE (services page specific)
+    {
+      key: "services_perks_home",
+      category: "services_page",
+      label: "Avantages - Domicile",
+      type: "textarea",
+      value: "Aucun déplacement\nMatériel adapté fourni\nHoraires flexibles\nSuivi personnalisé",
+      sortOrder: 1
+    },
+    {
+      key: "services_perks_outdoor",
+      category: "services_page",
+      label: "Avantages - Extérieur",
+      type: "textarea",
+      value: "Pleine nature\nVariété des environnements\nEffet énergisant\nCardio + renforcement",
+      sortOrder: 2
+    },
+    {
+      key: "services_perks_gym",
+      category: "services_page",
+      label: "Avantages - Salle",
+      type: "textarea",
+      value: "Accès équipement complet\nEncadrement technique\nProgressivité\nIdéal objectifs muscu",
+      sortOrder: 3
+    },
+    {
+      key: "services_perks_online",
+      category: "services_page",
+      label: "Avantages - En ligne",
+      type: "textarea",
+      value: "Plan écrit détaillé\nVidéos d'exercices\nSuivi mensuel en visio\nLiberté totale",
+      sortOrder: 4
+    },
+    {
+      key: "services_cta_title",
+      category: "services_page",
+      label: "CTA - Titre",
+      type: "text",
+      value: "On commence ?",
+      sortOrder: 5
+    },
+    // TEMOIGNAGES PAGE
+    {
+      key: "temoignages_page_title",
+      category: "temoignages_page",
+      label: "Titre de la page",
+      type: "text",
+      value: "Leurs transformations",
+      sortOrder: 1
+    },
+    {
+      key: "temoignages_page_description",
+      category: "temoignages_page",
+      label: "Description",
+      type: "text",
+      value: "Ils m'ont fait confiance. Voici leurs mots.",
+      sortOrder: 2
+    },
+    // BLOG PAGE
+    {
+      key: "blog_page_title",
+      category: "blog_page",
+      label: "Titre de la page",
+      type: "text",
+      value: "Conseils sport & nutrition",
+      sortOrder: 1
+    },
+    {
+      key: "blog_empty_text",
+      category: "blog_page",
+      label: "Texte si aucun article",
+      type: "text",
+      value: "Les premiers articles arrivent bientôt. Reviens vite !",
+      sortOrder: 2
+    },
     // SEO
     {
       key: "seo_home_title",
