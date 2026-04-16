@@ -22,7 +22,8 @@ export default async function Footer() {
     <footer className="bg-brand-dark text-brand-ivory mt-20">
       <div className="container-editorial py-16 grid gap-10 md:grid-cols-4">
         <div>
-          <Image src="/logo.png" alt="Élodie Duhayon — Personal Trainer" width={180} height={80} className="brightness-0 invert opacity-90" />
+          <Image src="/monogramme.png" alt="Élodie Duhayon" width={50} height={50} className="mb-3 opacity-90" />
+          <h3 className="font-serif text-2xl font-bold text-brand-roseLight">Élodie Duhayon</h3>
           <p className="mt-3 text-sm text-brand-ivory/70 leading-relaxed">{tagline}</p>
         </div>
 
