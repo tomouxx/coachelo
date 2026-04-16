@@ -6,7 +6,13 @@ import { ClipboardList, Salad, LineChart } from "lucide-react";
 export const metadata = { title: "Nutrition" };
 
 export default async function NutritionPage() {
-  const settings = await getSettings("nutrition").catch((): Record<string, string> => ({}));
+  const [settings, images] = await Promise.all([
+    getSettings("nutrition").catch((): Record<string, string> => ({})),
+    getSettings("images").catch((): Record<string, string> => ({}))
+  ]);
+
+  const imgNutritionHero = images["img_nutrition_hero"] || "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80";
+  const imgNutritionPhil = images["img_nutrition_philosophy"] || "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80";
 
   const heroTitle = settings["nutrition_hero_title"] || "La nutrition, moitié du chemin";
   const heroSubtitle = settings["nutrition_hero_subtitle"] || "Une approche durable, concrète, sans régime ni culpabilité.";
@@ -25,7 +31,7 @@ export default async function NutritionPage() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80')",
+              `url('${imgNutritionHero}')`,
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
@@ -69,7 +75,7 @@ export default async function NutritionPage() {
         <div className="container-editorial py-24 grid md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] rounded-xl2 overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+              src={imgNutritionPhil}
               alt="Bol healthy"
               fill
               className="object-cover"

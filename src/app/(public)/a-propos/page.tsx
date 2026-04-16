@@ -6,7 +6,12 @@ import { Heart, ShieldCheck, Sparkles } from "lucide-react";
 export const metadata = { title: "À propos" };
 
 export default async function AboutPage() {
-  const settings = await getSettings("about").catch((): Record<string, string> => ({}));
+  const [settings, images] = await Promise.all([
+    getSettings("about").catch((): Record<string, string> => ({})),
+    getSettings("images").catch((): Record<string, string> => ({}))
+  ]);
+
+  const imgPortrait = images["img_portrait_elodie"] || "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=90";
 
   const introText = settings["about_page_intro_text"] || "Mon parcours n'a pas commencé dans une salle de sport. Il a commencé à l'hôpital, auprès de personnes fragiles, en fin de vie ou en reprise d'autonomie. C'est là que j'ai appris à observer, écouter, respecter un corps.";
   const listening = settings["about_values_listening"] || "Ton corps, ton histoire, ton rythme.";
@@ -28,7 +33,7 @@ export default async function AboutPage() {
       <section className="container-editorial grid md:grid-cols-2 gap-12 pb-24 items-start">
         <div className="relative aspect-[3/4] rounded-xl2 overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=90"
+            src={imgPortrait}
             alt="Élodie"
             fill
             className="object-cover"

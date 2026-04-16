@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Save, AlertCircle } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Save, AlertCircle, Upload, ImageIcon } from "lucide-react";
 
 interface Setting {
   key: string;
@@ -23,6 +23,7 @@ const categoryLabels: Record<string, string> = {
   tarifs: "Services & Tarifs",
   services_faq: "FAQ Services",
   contact_info: "Contact",
+  images: "Photos & Images",
   seo: "SEO"
 };
 
@@ -127,6 +128,25 @@ export default function ContentPage() {
     }
   }
 
+  async function uploadImage(key: string, file: File) {
+    const fd = new FormData();
+    fd.append("file", file);
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: fd });
+      if (!res.ok) {
+        const err = await res.json();
+        setMessage({ type: "error", text: err.error || "Erreur upload" });
+        return;
+      }
+      const { url } = await res.json();
+      setFormData({ ...formData, [key]: url });
+      setMessage({ type: "success", text: "Image uploadée ✓" });
+      setTimeout(() => setMessage(null), 3000);
+    } catch {
+      setMessage({ type: "error", text: "Erreur lors de l'upload" });
+    }
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -184,7 +204,47 @@ export default function ContentPage() {
                 <label className="block text-sm font-semibold text-brand-dark mb-2">
                   {setting.label}
                 </label>
-                {setting.type === "textarea" ? (
+                {setting.type === "image" ? (
+                  <div className="space-y-3">
+                    {formData[setting.key] && (
+                      <div className="relative w-48 h-32 rounded-lg overflow-hidden border border-brand-divider">
+                        <img
+                          src={formData[setting.key]}
+                          alt={setting.label}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex gap-3 items-center">
+                      <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-brand-nude border border-brand-divider rounded-lg text-sm font-medium hover:bg-brand-ivory transition">
+                        <Upload className="w-4 h-4" />
+                        Uploader une image
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) uploadImage(setting.key, file);
+                          }}
+                        />
+                      </label>
+                      <span className="text-xs text-brand-taupe">ou</span>
+                      <input
+                        type="text"
+                        value={formData[setting.key] || ""}
+                        onChange={(e) =>
+                          setFormData({ ...formData, [setting.key]: e.target.value })
+                        }
+                        placeholder="URL de l'image"
+                        className="flex-1 px-3 py-2 border border-brand-divider rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-rose/50"
+                      />
+                    </div>
+                    <p className="text-xs text-brand-taupe">
+                      JPG, PNG ou WebP — max 5 Mo. Tu peux aussi coller une URL externe.
+                    </p>
+                  </div>
+                ) : setting.type === "textarea" ? (
                   <textarea
                     value={formData[setting.key] || ""}
                     onChange={(e) =>

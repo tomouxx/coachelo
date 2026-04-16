@@ -6,7 +6,8 @@ out
 .env.production
 *.log
 .DS_Store
-/public/uploads
+/public/uploads/*
+!/public/uploads/.gitkeep
 /prisma/*.db
 /prisma/*.db-journal
 .vercel

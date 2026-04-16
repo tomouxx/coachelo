@@ -438,6 +438,47 @@ async function main() {
       value: "https://instagram.com",
       sortOrder: 4
     },
+    // IMAGES
+    {
+      key: "img_hero_bg",
+      category: "images",
+      label: "Image de fond Hero (Accueil)",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80",
+      sortOrder: 1
+    },
+    {
+      key: "img_portrait_elodie",
+      category: "images",
+      label: "Portrait d'Élodie (Accueil + À propos)",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=80",
+      sortOrder: 2
+    },
+    {
+      key: "img_nutrition_hero",
+      category: "images",
+      label: "Image de fond Hero Nutrition",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80",
+      sortOrder: 3
+    },
+    {
+      key: "img_nutrition_philosophy",
+      category: "images",
+      label: "Image Philosophie Nutrition",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+      sortOrder: 4
+    },
+    {
+      key: "img_home_nutrition_bg",
+      category: "images",
+      label: "Image fond section Nutrition (Accueil)",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80",
+      sortOrder: 5
+    },
     // SEO
     {
       key: "seo_home_title",

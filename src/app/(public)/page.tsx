@@ -14,17 +14,23 @@ const locationIcon: Record<string, any> = {
 };
 
 export default async function HomePage() {
-  const [services, testimonials, latestPosts, settings] = await Promise.all([
+  const [services, testimonials, latestPosts, settings, images] = await Promise.all([
     prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
     prisma.testimonial.findMany({ where: { published: true }, orderBy: { sortOrder: "asc" }, take: 3 }).catch(() => []),
     prisma.blogPost.findMany({ where: { published: true }, orderBy: { publishedAt: "desc" }, take: 3 }).catch(() => []),
-    getSettings("hero").catch((): Record<string, string> => ({}))
+    getSettings("hero").catch((): Record<string, string> => ({})),
+    getSettings("images").catch((): Record<string, string> => ({}))
   ]);
 
   // Get hero content with fallbacks
   const heroEyebrow = settings["home_hero_eyebrow"] || "Coach sportive & nutrition · Suisse";
   const heroTitle = settings["home_hero_title"] || "Coach sportive & nutrition à ton rythme";
   const heroSubtitle = settings["home_hero_subtitle"] || "Coaching personnalisé à domicile, en extérieur, en salle et en ligne — depuis Poliez-Pittet.";
+
+  // Images with fallbacks
+  const imgHeroBg = images["img_hero_bg"] || "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80";
+  const imgPortrait = images["img_portrait_elodie"] || "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=80";
+  const imgNutritionBg = images["img_home_nutrition_bg"] || "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80";
 
   return (
     <>
@@ -34,7 +40,7 @@ export default async function HomePage() {
           className="absolute inset-0 opacity-40"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80')",
+              `url('${imgHeroBg}')`,
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
@@ -88,7 +94,7 @@ export default async function HomePage() {
       <section className="container-editorial py-24 grid md:grid-cols-2 gap-12 items-center">
         <div className="relative aspect-[4/5] overflow-hidden rounded-xl2 border border-brand-roseLight/40">
           <Image
-            src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=80"
+            src={imgPortrait}
             alt="Portrait d'Élodie"
             fill
             className="object-cover"
@@ -145,7 +151,7 @@ export default async function HomePage() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80')",
+              `url('${imgNutritionBg}')`,
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
