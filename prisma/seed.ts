@@ -133,6 +133,8 @@ async function main() {
     }
   ];
 
+  // Supprime les anciens témoignages avant de recréer (évite les doublons)
+  await prisma.testimonial.deleteMany();
   for (const t of testimonials) {
     await prisma.testimonial.create({ data: t });
   }
@@ -419,7 +421,7 @@ async function main() {
       category: "contact_info",
       label: "Téléphone",
       type: "text",
-      value: "+41 (0)XX XXX XX XX",
+      value: "+41 00 000 00 00",
       sortOrder: 2
     },
     {
@@ -427,7 +429,7 @@ async function main() {
       category: "contact_info",
       label: "Email",
       type: "text",
-      value: "elodie@elodieduhayon.ch",
+      value: "contact@elodieduhayon.ch",
       sortOrder: 3
     },
     {

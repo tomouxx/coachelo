@@ -10,6 +10,10 @@ const nextConfig = {
   // Désactive la génération statique parallèle (évite jest-worker qui sature le nb de threads)
   staticPageGenerationTimeout: 120,
   images: {
+    // Infomaniak mutualisé : le proxy /_next/image ne peut pas optimiser
+    // les images externes (sharp absent / ressources limitées).
+    // On désactive l'optimisation pour que les images s'affichent directement.
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },

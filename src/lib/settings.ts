@@ -4,7 +4,7 @@ export type SettingsCache = Record<string, string>;
 
 let settingsCache: SettingsCache | null = null;
 let cacheTime = 0;
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const CACHE_TTL = 60 * 1000; // 1 minute
 
 /**
  * Get all settings or settings by category from database
