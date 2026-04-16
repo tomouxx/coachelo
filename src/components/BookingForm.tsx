@@ -82,7 +82,8 @@ export default function BookingForm({ services, preselectedSlug }: { services: S
           email: form.email,
           phone: form.phone,
           goal: form.goal,
-          message: form.message
+          message: form.message,
+          consent: form.rgpd
         })
       });
       if (!res.ok) {

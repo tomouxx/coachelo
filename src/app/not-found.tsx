@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-rose-50 to-white px-4">
       <div className="text-center max-w-md">
+        <Image src="/monogramme.png" alt="Logo" width={64} height={64} className="mx-auto mb-4 opacity-60" />
         <p className="text-8xl font-bold text-rose-300 font-heading">404</p>
         <h1 className="mt-4 text-2xl font-bold text-gray-900">
           Page introuvable

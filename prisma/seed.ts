@@ -481,6 +481,54 @@ async function main() {
       value: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80",
       sortOrder: 5
     },
+    {
+      key: "img_service_home",
+      category: "images",
+      label: "Photo service — À domicile",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+      sortOrder: 6
+    },
+    {
+      key: "img_service_outdoor",
+      category: "images",
+      label: "Photo service — Extérieur",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
+      sortOrder: 7
+    },
+    {
+      key: "img_service_gym",
+      category: "images",
+      label: "Photo service — Salle de sport",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+      sortOrder: 8
+    },
+    {
+      key: "img_service_online",
+      category: "images",
+      label: "Photo service — En ligne",
+      type: "image",
+      value: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+      sortOrder: 9
+    },
+    {
+      key: "img_logo",
+      category: "images",
+      label: "Logo principal (Footer)",
+      type: "image",
+      value: "/logo.png",
+      sortOrder: 10
+    },
+    {
+      key: "img_monogramme",
+      category: "images",
+      label: "Monogramme (Header)",
+      type: "image",
+      value: "/monogramme.png",
+      sortOrder: 11
+    },
     // HOME SECTIONS (all non-hero homepage content)
     {
       key: "home_about_eyebrow",

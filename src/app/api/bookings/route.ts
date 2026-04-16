@@ -94,7 +94,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, id: booking.id }, { status: 201 });
   } catch (err: any) {
     if (err?.issues) {
-      return NextResponse.json({ error: "Données invalides", issues: err.issues }, { status: 400 });
+      const fieldLabels: Record<string, string> = {
+        serviceId: "Prestation",
+        startsAt: "Date de début",
+        endsAt: "Date de fin",
+        firstName: "Prénom",
+        lastName: "Nom",
+        email: "Email",
+        phone: "Téléphone",
+        goal: "Objectif",
+        message: "Message",
+        consent: "Consentement RGPD"
+      };
+      const messages = (err.issues as any[]).map((issue: any) => {
+        const field = issue.path?.[0];
+        const label = fieldLabels[field] || field || "Champ";
+        if (issue.code === "too_small") return `${label} : minimum ${issue.minimum} caractères`;
+        if (issue.code === "too_big") return `${label} : maximum ${issue.maximum} caractères`;
+        if (issue.code === "invalid_string" && issue.validation === "email") return `${label} : adresse email invalide`;
+        if (issue.code === "invalid_string" && issue.validation === "datetime") return `${label} : format de date invalide`;
+        if (issue.code === "invalid_literal") return `${label} : requis`;
+        return `${label} : ${issue.message}`;
+      });
+      return NextResponse.json({ error: messages.join(" · "), issues: err.issues }, { status: 400 });
     }
     console.error(err);
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });

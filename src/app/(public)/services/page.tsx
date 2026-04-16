@@ -1,17 +1,19 @@
 import { prisma } from "@/lib/prisma";
 import { getSettings } from "@/lib/settings";
 import Link from "next/link";
+import Image from "next/image";
 import { Check } from "lucide-react";
 
 export const metadata = { title: "Services" };
 export const revalidate = 60;
 
 export default async function ServicesPage() {
-  const [services, faqSettings, tarifsS, servicesS] = await Promise.all([
+  const [services, faqSettings, tarifsS, servicesS, images] = await Promise.all([
     prisma.service.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
     getSettings("services_faq").catch((): Record<string, string> => ({})),
     getSettings("tarifs").catch((): Record<string, string> => ({})),
-    getSettings("services_page").catch((): Record<string, string> => ({}))
+    getSettings("services_page").catch((): Record<string, string> => ({})),
+    getSettings("images").catch((): Record<string, string> => ({}))
   ]);
 
   // Build perks from settings
@@ -20,6 +22,13 @@ export default async function ServicesPage() {
     OUTDOOR: (servicesS["services_perks_outdoor"] || "Pleine nature\nVariété des environnements\nEffet énergisant\nCardio + renforcement").split("\n").filter(Boolean),
     GYM: (servicesS["services_perks_gym"] || "Accès équipement complet\nEncadrement technique\nProgressivité\nIdéal objectifs muscu").split("\n").filter(Boolean),
     ONLINE: (servicesS["services_perks_online"] || "Plan écrit détaillé\nVidéos d'exercices\nSuivi mensuel en visio\nLiberté totale").split("\n").filter(Boolean)
+  };
+
+  const serviceImages: Record<string, string> = {
+    HOME: images["img_service_home"] || "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+    OUTDOOR: images["img_service_outdoor"] || "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
+    GYM: images["img_service_gym"] || "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+    ONLINE: images["img_service_online"] || "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80"
   };
 
   const ctaTitle = servicesS["services_cta_title"] || "On commence ?";
@@ -48,8 +57,13 @@ export default async function ServicesPage() {
             key={s.id}
             className={`grid gap-10 md:grid-cols-2 items-center ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
           >
-            <div className="relative aspect-[4/3] bg-brand-nude rounded-xl2 overflow-hidden flex items-center justify-center">
-              <span className="font-serif text-8xl text-brand-rose/30">{i + 1}</span>
+            <div className="relative aspect-[4/3] bg-brand-nude rounded-xl2 overflow-hidden">
+              <Image
+                src={serviceImages[s.location] || serviceImages["HOME"]}
+                alt={s.name}
+                fill
+                className="object-cover"
+              />
             </div>
             <div>
               <p className="eyebrow">{s.priceLabel}</p>
