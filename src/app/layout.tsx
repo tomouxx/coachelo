@@ -14,15 +14,42 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.coachelo.ch"),
   title: {
-    default: "Élodie Duhayon · Coach sportive & nutrition en Suisse",
+    default: "Élodie Duhayon · Coach sportive & nutrition à Poliez-Pittet",
     template: "%s · Élodie Duhayon"
   },
   description:
-    "Coaching sportif et nutrition personnalisés à Poliez-Pittet et en ligne. Ancienne infirmière diplômée d'État, je t'accompagne avec rigueur et bienveillance.",
+    "Coaching sportif et nutrition personnalisés à domicile, en extérieur, en salle et en ligne. Ancienne infirmière diplômée, Élodie t'accompagne avec rigueur et bienveillance depuis Poliez-Pittet, Suisse.",
+  keywords: [
+    "coach sportif", "personal trainer", "nutrition", "Poliez-Pittet",
+    "Lausanne", "Suisse", "coaching personnalisé", "coach femme",
+    "fitness", "remise en forme", "perte de poids", "renforcement musculaire"
+  ],
+  authors: [{ name: "Élodie Duhayon" }],
+  creator: "Élodie Duhayon",
   openGraph: {
     type: "website",
     locale: "fr_CH",
-    siteName: "Élodie Duhayon Personal Trainer"
+    siteName: "Élodie Duhayon — Personal Trainer",
+    title: "Élodie Duhayon · Coach sportive & nutrition à Poliez-Pittet",
+    description: "Coaching sportif et nutrition personnalisés à domicile, en extérieur, en salle et en ligne depuis Poliez-Pittet.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Élodie Duhayon — Personal Trainer"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Élodie Duhayon · Coach sportive & nutrition",
+    description: "Coaching sportif et nutrition personnalisés depuis Poliez-Pittet, Suisse.",
+    images: ["/og-image.jpg"]
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png"
   },
   robots: { index: true, follow: true }
 };

@@ -90,7 +90,7 @@ export default async function ContactPage() {
 
           <div className="rounded-xl2 overflow-hidden border border-brand-divider">
             <iframe
-              src="https://www.openstreetmap.org/export/embed.html?bbox=6.6%2C46.6%2C6.7%2C46.7&layer=mapnik"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=6.665%2C46.617%2C6.700%2C46.638&layer=mapnik&marker=46.6275%2C6.6819"
               className="w-full aspect-video"
               loading="lazy"
               title="Carte Poliez-Pittet"
