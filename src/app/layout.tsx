@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import Providers from "@/components/Providers";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap"
-});
+/**
+ * FONT STRATEGY
+ * Self-hosted-equivalent fonts from Fontshare (free commercial license).
+ * Loaded via @font-face + @import in globals.css — CDN: cdn.fontshare.com
+ * - Display : Boska (variable serif, feminine, expressive)
+ * - Body    : General Sans (warm, rounded humanist sans)
+ *
+ * For strict self-hosting: download woff2 from fontshare.com,
+ * place in /public/fonts/ and swap the @font-face src in globals.css.
+ */
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.coachelo.ch"),
@@ -56,7 +59,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="fr">
+      <head>
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+      </head>
       <body className="font-sans antialiased">
         <Providers>{children}</Providers>
         {process.env.PLAUSIBLE_DOMAIN && (
